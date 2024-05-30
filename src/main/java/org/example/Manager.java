@@ -3,11 +3,9 @@ package org.example;
 
 public class Manager extends Employee {
 
-    public Manager(String name, String midName, String surName, String phone, String position, int salary, int birth, int bMonth, int bDay) {
-        super(name, midName, surName, phone, position, salary, birth, bMonth, bDay);
+    public Manager(String name, String midName, String surName, String phone, String position, int salary, int birth, int bMonth, int bDay, Genders gender) {
+        super(name, midName, surName, phone, position, salary, birth, bMonth, bDay, gender);
     }
-
-
 
     public static void increaser(Employee[] emp, int age, int increment) {
         for (Employee e : emp) {

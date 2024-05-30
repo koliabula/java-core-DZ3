@@ -17,6 +17,11 @@ public class Employee {
     int bMonth;
     int bDay;
 
+    enum Genders {MALE, FEMALE}
+
+    ;
+    Genders gender;
+
 
     int getAge() {
         return CURRENT_YEAR - birth;
@@ -33,6 +38,7 @@ public class Employee {
                 ", phone='" + phone + '\'' +
                 ", salary=" + salary +
                 ", age=" + getAge() +
+                ", gender=" + gender +
                 '}';
     }
 
@@ -46,16 +52,16 @@ public class Employee {
 
     public static float averageSalary(Employee[] emp) {
         float result = 0;
-        for (Employee e:
-             emp) {
+        for (Employee e :
+                emp) {
             result += e.salary;
         }
         return result / emp.length;
     }
 
-    public static float averageAge(Employee[] emp){
+    public static float averageAge(Employee[] emp) {
         float result = 0;
-        for (Employee e:
+        for (Employee e :
                 emp) {
             result += e.getAge();
         }
@@ -70,5 +76,23 @@ public class Employee {
     }
 
 
+    enum Parties {NONE, NEW_YEAR, MARCH_8, FEB_23}
+
+    private static Parties today = Parties.FEB_23;
+
+    public static void celebrate(Employee[] employees) {
+        for (int i = 0; i < employees.length; i++) {
+
+            if (today == Parties.NEW_YEAR) {
+                System.out.println(employees[i].name + ", С Новым Годом!");
+            } else if (today == Parties.FEB_23) {
+                if (employees[i].gender == Employee.Genders.MALE)
+                    System.out.println(employees[i].name + ", с 23 Февраля, Мужики!!!");
+            } else if (today == Parties.MARCH_8) {
+                if (employees[i].gender == Employee.Genders.FEMALE)
+                    System.out.println(employees[i].name + ", Дечули, с 8 Марта!");
+            } else System.out.println(employees[i].name + ", сегодня отличный денёк!");
+        }
+    }
 }
 
